@@ -55,6 +55,18 @@
         <Parameter name="XML_CONTENTS" />
       </Parameters>
     </Constraint>
+    <Constraint text="(RECORD_CONTENTS = &quot;EMPTY FIELDS&quot;) =&gt; (XML_CONTENTS = &quot;EMPTY&quot;)">
+      <Parameters>
+        <Parameter name="RECORD_CONTENTS" />
+        <Parameter name="XML_CONTENTS" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(RECORD_CONTENTS = &quot;SINGLE FIELD&quot;) =&gt; (XML_CONTENTS != &quot;MULTIPLE_OBJECTS&quot;)">
+      <Parameters>
+        <Parameter name="RECORD_CONTENTS" />
+        <Parameter name="XML_CONTENTS" />
+      </Parameters>
+    </Constraint>
   </Constraints>
   <Testset doi="2">
     <Testcase TCNo="0">
@@ -115,14 +127,14 @@
     </Testcase>
     <Testcase TCNo="8">
       <Value>9</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>SINGLE FIELD</Value>
-      <Value>MULTIPLE_OBJECTS</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>EMPTY FIELDS</Value>
+      <Value>EMPTY</Value>
     </Testcase>
     <Testcase TCNo="9">
       <Value>10</Value>
-      <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
       <Value>EMPTY FIELDS</Value>
       <Value>EMPTY</Value>
@@ -131,20 +143,6 @@
       <Value>11</Value>
       <Value>true</Value>
       <Value>true</Value>
-      <Value>EMPTY FIELDS</Value>
-      <Value>SINGLE_OBJECT</Value>
-    </Testcase>
-    <Testcase TCNo="11">
-      <Value>12</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>EMPTY FIELDS</Value>
-      <Value>MULTIPLE_OBJECTS</Value>
-    </Testcase>
-    <Testcase TCNo="12">
-      <Value>13</Value>
-      <Value>true</Value>
-      <Value>false</Value>
       <Value>EMPTY FIELDS</Value>
       <Value>EMPTY</Value>
     </Testcase>
@@ -157,11 +155,11 @@
     <Value>XML_CONTENTS</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.06</ExecutionTime>
+    <ExecutionTime>0.016</ExecutionTime>
     <MaxDomainSize>4</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>33</TotalNoOfCombination>
-    <TotalNoOfTests>13</TotalNoOfTests>
+    <TotalNoOfCombination>30</TotalNoOfCombination>
+    <TotalNoOfTests>11</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
 </System>
