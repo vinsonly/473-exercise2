@@ -1,1 +1,1 @@
-{"employee": {"name": "julian", "department": "IT", "manager": "vinson"}}
+{"employees": {"name": ["vinson", "julian", "leon"], "department": ["IT", "sales"], "salary": 5}}

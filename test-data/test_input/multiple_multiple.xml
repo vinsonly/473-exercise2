@@ -1,5 +1,8 @@
-<employee>
+<employees>
+    <name>vinson</name>
     <name>julian</name>
+    <name>leon</name>
     <department>IT</department>
-    <manager>vinson</manager>
-</employee>
+    <department>sales</department>
+    <salary>5</salary>
+</employees>

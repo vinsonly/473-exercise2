@@ -1,8 +1,0 @@
-<employee>
-    <name>julian</name>
-    <department>IT</department>
-    <manager>
-        <name>vinson</name>
-        <department>IT</department>
-    </manager>
-</employee>

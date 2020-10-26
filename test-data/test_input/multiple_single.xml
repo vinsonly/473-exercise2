@@ -1,3 +1,5 @@
-<employees>
-    <name>vinson</name>
-</employees>
+<employee>
+    <name>julian</name>
+    <department>IT</department>
+    <manager>vinson</manager>
+</employee>

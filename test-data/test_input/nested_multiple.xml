@@ -1,0 +1,18 @@
+<employees>
+    <employee>
+        <name>julian</name>
+        <department>IT</department>
+        <manager>
+            <name>vinson</name>
+            <department>IT</department>
+        </manager>
+    </employee>
+    <employee>
+        <name>leon</name>
+        <department>IT</department>
+        <manager>
+            <name>vinson</name>
+            <department>IT</department>
+        </manager>
+    </employee>
+</employees>
