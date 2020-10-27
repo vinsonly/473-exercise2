@@ -4,18 +4,6 @@ from json import dumps
 import pytest
 import sys
 
-def invalid():
-    assert True
-
-def test_empty():
-    # arrange
-    file = open("./test-data/test_input/empty.xml", "r")
-    file_text = file.read()
-
-    # act & assert
-    with pytest.raises(ParseError, match=r".*no element found.*"):
-        json_str = dumps(parker.data(fromstring(file_text)), preserve_root=True)
-
 def test_single_empty():
     # arrange
     input = open("./test-data/test_input/single_empty.xml", "r")
@@ -151,6 +139,32 @@ def test_nested_multiple():
 
     # assert
     assert res == expected_text
+
+def test_invalid_input_path():
+    # arrange & assert
+    with pytest.raises(FileNotFoundError):
+        input = open("./test-data/test_input/this_is_not_a_file.xml", "r")
+        input_text = input.read()
+        print("input_text: " + input_text)
+
+def test_invalid_xml():
+    # arrange
+    input = open("./test-data/test_input/invalid.xml", "r")
+    input_text = input.read()
+    print("input_text: " + input_text)
+    
+    # act & assert
+    with pytest.raises(ParseError, match=r".*syntax error.*"):
+        json_str = dumps(parker.data(fromstring(input_text), preserve_root=False))
+
+def test_empty():
+    # arrange
+    file = open("./test-data/test_input/empty.xml", "r")
+    file_text = file.read()
+
+    # act & assert
+    with pytest.raises(ParseError, match=r".*no element found.*"):
+        json_str = dumps(parker.data(fromstring(file_text)), preserve_root=True)
 
 if __name__ == '__main__':
     globals()[sys.argv[1]]()
