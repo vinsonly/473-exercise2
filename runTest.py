@@ -142,7 +142,9 @@ def test_nested_multiple():
 
 def test_invalid_input_path():
     # arrange & assert
-    with pytest.raises(FileNotFoundError):
+    expected_message = open("./test-data/expected_messages/invalid_input_path.log", "r").read()
+
+    with pytest.raises(FileNotFoundError, match=r".*" + expected_message + ".*"):
         input = open("./test-data/test_input/this_is_not_a_file.xml", "r")
         input_text = input.read()
         print("input_text: " + input_text)
@@ -153,8 +155,10 @@ def test_invalid_xml():
     input_text = input.read()
     print("input_text: " + input_text)
     
+    expected_message = open("./test-data/expected_messages/invalid_xml.log", "r").read()
+
     # act & assert
-    with pytest.raises(ParseError, match=r".*syntax error.*"):
+    with pytest.raises(ParseError, match=r".*" + expected_message + ".*"):
         json_str = dumps(parker.data(fromstring(input_text), preserve_root=False))
 
 def test_empty():
@@ -162,8 +166,10 @@ def test_empty():
     file = open("./test-data/test_input/empty.xml", "r")
     file_text = file.read()
 
+    expected_message = open("./test-data/expected_messages/empty.log", "r").read()
+
     # act & assert
-    with pytest.raises(ParseError, match=r".*no element found.*"):
+    with pytest.raises(ParseError, match=r".*" + expected_message + ".*"):
         json_str = dumps(parker.data(fromstring(file_text)), preserve_root=True)
 
 if __name__ == '__main__':
